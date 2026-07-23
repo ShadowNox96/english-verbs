@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinco formas · Los verbos en inglés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9EDF1;
+  --card:#FFFFFF;
+  --ink:#131A24;
+  --ink-soft:#5D6875;
+  --line:#C9D2DB;
+  --line-soft:#DFE5EA;
+
+  --f-base:#1F5FA9;
+  --f-third:#6C3FA0;
+  --f-past:#B23F2E;
+  --f-pp:#0E7C63;
+  --f-ing:#9E6B0C;
+
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:58px 0}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft);margin:0 0 14px;
+}
+h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(38px,7.6vw,86px);line-height:.93;letter-spacing:-.03em;
+  text-transform:uppercase;margin:0;
+}
+h2{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(22px,3.4vw,34px);letter-spacing:-.02em;margin:0 0 6px;
+}
+h3{font-family:var(--display);font-weight:600;font-size:18px;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 14px;max-width:62ch}
+.lede{font-size:19px;color:var(--ink-soft)}
+.rule{height:1px;background:var(--line);margin:0}
+
+/* ---------- HERO ---------- */
+.hero{padding:70px 0 40px}
+.hero-sub{max-width:56ch;margin-top:22px;font-size:19px}
+.keys{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 0}
+.key{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:12px 16px;min-width:132px;
+  border-top:4px solid var(--kc,var(--ink));
+}
+.key .kl{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);display:block}
+.key .kv{font-family:var(--mono);font-weight:600;font-size:20px;color:var(--kc);display:block;margin-top:3px}
+.key .kn{font-size:13px;color:var(--ink-soft);display:block;margin-top:4px;line-height:1.35}
+
+/* ---------- CONTROLES ---------- */
+.controls{
+  position:sticky;top:0;z-index:20;
+  background:rgba(233,237,241,.93);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;
+}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end}
+.ctrl label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:5px}
+select{
+  font-family:var(--mono);font-size:15px;padding:8px 10px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:3px;min-width:190px;
+}
+.seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--card)}
+.seg button{
+  font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  border:0;background:transparent;color:var(--ink-soft);padding:10px 14px;cursor:pointer;border-right:1px solid var(--line-soft);
+}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--f-base);outline-offset:2px}
+
+/* ---------- FICHA DEL VERBO ---------- */
+.forms{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}
+.form-cell{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--fc);border-radius:3px;padding:14px}
+.form-cell .fl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.form-cell .fv{font-family:var(--mono);font-weight:600;font-size:clamp(16px,2vw,22px);color:var(--fc);margin-top:6px;word-break:break-word}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line);border-radius:2px;color:var(--ink-soft)}
+
+/* ---------- MATRIZ ---------- */
+.matrix{display:grid;grid-template-columns:104px repeat(4,minmax(0,1fr));gap:9px;margin-top:26px}
+.mx-head{
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-soft);padding:0 0 4px 2px;align-self:end;
+}
+.mx-rowlabel{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px;letter-spacing:-.01em;
+  display:flex;align-items:center;
+}
+.cell{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px;
+  display:flex;flex-direction:column;gap:9px;transition:transform .15s ease,box-shadow .15s ease;
+}
+.cell:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(19,26,36,.09)}
+.cell-aspect{display:none}
+.formula{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.formula .op{opacity:.45}
+.sentence{font-size:16.5px;line-height:1.4}
+.note{font-size:13px;color:var(--ink-soft);line-height:1.4;border-top:1px solid var(--line-soft);padding-top:8px;margin-top:auto}
+.warn{font-size:12.5px;color:var(--f-past);line-height:1.35}
+.tk-aux{border-bottom:1.5px dotted var(--ink-soft)}
+.tk-form{font-weight:600}
+.f-base{color:var(--f-base)} .f-third{color:var(--f-third)} .f-past{color:var(--f-past)}
+.f-pp{color:var(--f-pp)} .f-ing{color:var(--f-ing)}
+
+/* ---------- BLOQUES ---------- */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:20px}
+.box p{font-size:15.5px;margin-bottom:10px}
+.ex{font-family:var(--mono);font-size:14px;background:var(--paper);border-left:3px solid var(--fc,var(--f-pp));padding:9px 11px;margin:8px 0;line-height:1.45}
+.errors{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.err-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:14px}
+.err-row:last-child{border-bottom:0}
+.err-row div{padding:11px 14px}
+.err-bad{color:var(--f-past);border-right:1px solid var(--line-soft)}
+.err-good{color:var(--f-pp)}
+.err-why{grid-column:1/-1;font-family:var(--body);font-size:13.5px;color:var(--ink-soft);padding-top:0!important;border-top:0}
+
+/* ---------- IRREGULARES ---------- */
+.pattern{margin-top:24px}
+.pattern-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.pattern-code{font-family:var(--mono);font-weight:600;font-size:15px;padding:3px 9px;border:1px solid var(--ink);border-radius:2px}
+.pattern-desc{font-size:14.5px;color:var(--ink-soft)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+th{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-weight:400;
+}
+td{padding:8px 12px;border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:14px}
+tr:last-child td{border-bottom:0}
+td.es{font-family:var(--body);color:var(--ink-soft);font-size:14.5px}
+.c1{color:var(--f-base)} .c2{color:var(--f-past)} .c3{color:var(--f-pp);font-weight:600}
+input[type=search]{
+  font-family:var(--mono);font-size:14px;padding:9px 12px;border:1px solid var(--line);
+  background:var(--card);border-radius:3px;width:260px;max-width:100%;color:var(--ink);
+}
+.empty{padding:18px;color:var(--ink-soft);font-size:15px}
+footer{border-top:1px solid var(--line);padding:26px 0 50px;color:var(--ink-soft);font-size:14px}
+
+/* ---------- ÍNDICE ---------- */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.toc a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;border:1px solid var(--line);padding:8px 11px;border-radius:2px;background:var(--card);
+}
+.toc a:hover{border-color:var(--ink);color:var(--ink)}
+section[id]{scroll-margin-top:96px}
+
+/* ---------- JUEGOS ---------- */
+.game{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px;margin-top:24px}
+.game-top{border-bottom:1px solid var(--line-soft);padding-bottom:16px;margin-bottom:18px}
+.game-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-top:14px}
+.ctrl-inline{display:flex;align-items:center;gap:9px}
+.seg-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft)}
+.pool{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);margin-top:16px;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 11px;border:1px solid var(--line);background:var(--paper);border-radius:2px;cursor:pointer;color:var(--ink-soft);
+}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.score{display:flex;gap:20px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft)}
+.score b{display:block;font-family:var(--display);font-size:24px;color:var(--ink);letter-spacing:-.02em;margin-top:2px}
+.bar{height:4px;background:var(--line-soft);border-radius:2px;overflow:hidden;margin-bottom:22px}
+.bar i{display:block;height:100%;background:var(--ink);width:0;transition:width .3s ease}
+.prompt{text-align:center;padding:6px 0 26px}
+.prompt-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.prompt-word{font-family:var(--display);font-weight:800;font-size:clamp(30px,6vw,54px);letter-spacing:-.03em;margin-top:8px;line-height:1.05}
+.q-sentence{font-family:var(--body);font-size:clamp(19px,3.2vw,27px);line-height:1.55;text-align:center;margin-top:10px}
+.blank{display:inline-block;min-width:104px;border-bottom:2px solid var(--ink);text-align:center;font-weight:600;font-family:var(--mono);font-size:.9em}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt{
+  font-family:var(--mono);font-size:16px;padding:15px 16px;border:1px solid var(--line);background:var(--paper);
+  border-radius:3px;cursor:pointer;text-align:left;color:var(--ink);display:flex;gap:11px;align-items:center;transition:background .12s ease,border-color .12s ease;
+}
+.opt:hover:not(:disabled){background:#fff;border-color:var(--ink)}
+.opt .num{font-size:10px;color:var(--ink-soft);border:1px solid var(--line);border-radius:2px;padding:2px 6px;flex:none}
+.opt.ok{background:rgba(14,124,99,.11);border-color:var(--f-pp);color:var(--f-pp)}
+.opt.bad{background:rgba(178,63,46,.1);border-color:var(--f-past);color:var(--f-past)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:16px;min-height:46px;font-size:15px;color:var(--ink-soft);line-height:1.45}
+.feedback b{color:var(--ink);font-family:var(--mono);font-size:14.5px;font-weight:600}
+.btn{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:#fff;border:0;border-radius:3px;padding:13px 22px;cursor:pointer;
+}
+.btn:hover{background:#000}
+.result{text-align:center;padding:14px 0 8px}
+.result .big{font-family:var(--display);font-weight:800;font-size:clamp(40px,9vw,72px);letter-spacing:-.03em;line-height:1}
+.result .cap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.missed{margin:20px auto 22px;max-width:52ch;text-align:left;font-size:15px;color:var(--ink-soft)}
+.missed div{border-top:1px solid var(--line-soft);padding:7px 0;font-family:var(--mono);font-size:14px;color:var(--ink)}
+.missed div em{font-family:var(--body);font-style:normal;color:var(--ink-soft);float:right}
+
+@media (max-width:900px){
+  .opts{grid-template-columns:1fr}
+  .game-row{gap:12px}
+  .score{width:100%;justify-content:flex-start}
+  .matrix{grid-template-columns:1fr;gap:0}
+  .mx-head{display:none}
+  .mx-rowlabel{font-size:20px;padding:26px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .cell{margin-bottom:10px}
+  .cell-aspect{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft)}
+  .forms{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr}
+  .err-row{grid-template-columns:1fr}
+  .err-bad{border-right:0;border-bottom:1px solid var(--line-soft)}
+  .controls{position:static}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <p class="eyebrow">Gramática inglesa · referencia interactiva</p>
+  <h1>El inglés solo<br>tiene cinco<br>formas verbales</h1>
+  <p class="hero-sub">Todos los tiempos —pasado, presente, futuro y sus doce combinaciones— se arman con esas cinco piezas más un auxiliar. Cambia el verbo y observa qué pieza entra en cada casilla.</p>
+  <div class="keys" id="heroKeys"></div>
+  <nav class="toc">
+    <a href="#formas">Las cinco formas</a>
+    <a href="#tiempos">Los doce tiempos</a>
+    <a href="#participio">Past participle</a>
+    <a href="#regulares">Regulares</a>
+    <a href="#irregulares">Irregulares</a>
+    <a href="#vocabulario">Juego · vocabulario</a>
+    <a href="#practica">Juego · verbos</a>
+  </nav>
+</header>
+
+<div class="rule"></div>
+
+<div class="controls">
+  <div class="wrap ctrl-row">
+    <div class="ctrl">
+      <label for="verbSel">Verbo</label>
+      <select id="verbSel"></select>
+    </div>
+    <div class="ctrl">
+      <label for="subjSel">Sujeto</label>
+      <select id="subjSel">
+        <option value="I">I</option>
+        <option value="you">you</option>
+        <option value="she" selected>she / he</option>
+        <option value="we">we</option>
+        <option value="they">they</option>
+      </select>
+    </div>
+    <div class="ctrl">
+      <label>Forma de la oración</label>
+      <div class="seg" id="modeSeg">
+        <button data-mode="aff" aria-pressed="true">Afirmativa</button>
+        <button data-mode="neg" aria-pressed="false">Negativa</button>
+        <button data-mode="q" aria-pressed="false">Pregunta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="wrap" id="formas">
+  <p class="eyebrow">Paso 1 · las piezas</p>
+  <h2>Las cinco formas de <span id="verbTitle"></span></h2>
+  <p class="lede" id="verbGloss"></p>
+  <div class="forms" id="formsGrid"></div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="tiempos">
+  <p class="eyebrow">Paso 2 · las combinaciones</p>
+  <h2>Los doce tiempos</h2>
+  <p class="lede">Tres momentos por cuatro aspectos. Cada columna usa siempre la misma pieza: el color te dice cuál.</p>
+  <div class="matrix" id="matrix"></div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="participio">
+  <p class="eyebrow">Paso 3 · la pieza difícil</p>
+  <h2 style="color:var(--f-pp)">El past participle</h2>
+  <p class="lede">Es la única forma que nunca aparece sola: siempre lleva un auxiliar delante. Tiene tres trabajos.</p>
+  <div class="cols">
+    <div class="box">
+      <h3>1. Tiempos perfectos</h3>
+      <p>Detrás de <strong>have / has / had / will have</strong>. Habla de algo terminado que se conecta con otro momento.</p>
+      <div class="ex">She has <span class="f-pp">written</span> the report.<br>She had <span class="f-pp">written</span> it before the call.</div>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0">En español equivale a «ha escrito», «había escrito».</p>
+    </div>
+    <div class="box">
+      <h3>2. Voz pasiva</h3>
+      <p>Detrás de cualquier forma de <strong>be</strong>. El sujeto ya no hace la acción, la recibe.</p>
+      <div class="ex">The report was <span class="f-pp">written</span> by Ema.<br>The bug will be <span class="f-pp">fixed</span> today.</div>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0">Muy común en documentación técnica y correos formales.</p>
+    </div>
+    <div class="box">
+      <h3>3. Adjetivo</h3>
+      <p>Delante de un sustantivo, describiendo el resultado de una acción.</p>
+      <div class="ex">a <span class="f-pp">broken</span> build<br><span class="f-pp">written</span> instructions</div>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0">Compáralo con el <span class="f-ing">-ing</span>, que describe la causa: <em>a boring meeting</em> (aburre) vs <em>a bored engineer</em> (está aburrido).</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:38px;font-size:22px">Past simple o past participle: el error más caro</h3>
+  <p>La regla es mecánica: si hay auxiliar <strong>have/has/had</strong>, va participio. Si no hay auxiliar, va pasado simple.</p>
+  <div class="errors">
+    <div class="err-row">
+      <div class="err-bad">✗ I have went to the office.</div>
+      <div class="err-good">✓ I have <span class="f-pp">gone</span> to the office.</div>
+      <div class="err-why">Después de <em>have</em> nunca va el pasado simple.</div>
+    </div>
+    <div class="err-row">
+      <div class="err-bad">✗ Yesterday I have seen the results.</div>
+      <div class="err-good">✓ Yesterday I <span class="f-past">saw</span> the results.</div>
+      <div class="err-why">Con un momento cerrado del pasado (<em>yesterday, last week, in 2019</em>) el inglés exige pasado simple, aunque en español digas «he visto».</div>
+    </div>
+    <div class="err-row">
+      <div class="err-bad">✗ He don't know the answer.</div>
+      <div class="err-good">✓ He <span class="tk-aux">doesn't</span> <span class="f-base">know</span> the answer.</div>
+      <div class="err-why">La <em>-s</em> se la queda el auxiliar; el verbo principal vuelve a la forma base.</div>
+    </div>
+    <div class="err-row">
+      <div class="err-bad">✗ Did you went to the meeting?</div>
+      <div class="err-good">✓ Did you <span class="f-base">go</span> to the meeting?</div>
+      <div class="err-why">Igual que arriba: <em>did</em> ya marca el pasado, el verbo queda en base.</div>
+    </div>
+    <div class="err-row">
+      <div class="err-bad">✗ I have lived here since three years.</div>
+      <div class="err-good">✓ I have <span class="f-pp">lived</span> here for three years.</div>
+      <div class="err-why"><em>for</em> = duración; <em>since</em> = punto de inicio (<em>since 2019</em>).</div>
+    </div>
+    <div class="err-row">
+      <div class="err-bad">✗ I am agree with you.</div>
+      <div class="err-good">✓ I <span class="f-base">agree</span> with you.</div>
+      <div class="err-why"><em>Agree</em> ya es verbo; no necesita <em>be</em>. Lo mismo con <em>I have 30 years</em> → <em>I am 30</em>.</div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="regulares">
+  <p class="eyebrow">Referencia · verbos regulares</p>
+  <h2>Cuando el verbo es regular</h2>
+  <p class="lede">Pasado y participio son idénticos: base + <strong>-ed</strong>. Toda la dificultad se reduce a la ortografía.</p>
+  <div class="cols">
+    <div class="box" style="--fc:var(--f-past)">
+      <h3>-ed (pasado y participio)</h3>
+      <div class="ex">work → work<strong>ed</strong><br>study → stud<strong>ied</strong> (consonante + y)<br>stop → stop<strong>ped</strong> (1 sílaba, cvc)<br>like → lik<strong>ed</strong> (ya termina en e)</div>
+    </div>
+    <div class="box" style="--fc:var(--f-third)">
+      <h3>-s (tercera persona)</h3>
+      <div class="ex">work → work<strong>s</strong><br>fix, watch, go → fix<strong>es</strong>, watch<strong>es</strong>, go<strong>es</strong><br>study → stud<strong>ies</strong><br>have → <strong>has</strong> (irregular)</div>
+    </div>
+    <div class="box" style="--fc:var(--f-ing)">
+      <h3>-ing (gerundio)</h3>
+      <div class="ex">work → work<strong>ing</strong><br>write → writ<strong>ing</strong> (se cae la e)<br>run → run<strong>ning</strong> (1 sílaba, cvc)<br>lie → l<strong>ying</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="irregulares">
+  <p class="eyebrow">Referencia · verbos irregulares</p>
+  <h2>Los irregulares, agrupados por patrón</h2>
+  <p class="lede">No son una lista aleatoria: casi todos caen en cuatro patrones. Aprenderlos por grupo cuesta bastante menos.</p>
+  <p><input type="search" id="irrFilter" placeholder="filtrar: write, romper…" aria-label="Filtrar verbos irregulares"></p>
+  <div id="patterns"></div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="vocabulario">
+  <p class="eyebrow">Práctica · vocabulario</p>
+  <h2>Ronda de palabras</h2>
+  <p class="lede">Más de 600 palabras en 20 categorías. Elige categoría, dirección y cuántas quieres por ronda; responde con el ratón o con las teclas 1 a 4. Una palabra no vuelve a salir hasta que hayas recorrido toda la categoría, y al final ves solo las que fallaste.</p>
+  <div class="game">
+    <div class="game-top">
+      <div class="chips" id="vCats"></div>
+      <div class="game-row">
+        <div class="seg" id="vDir">
+          <button data-dir="es-en" aria-pressed="true">ES → EN</button>
+          <button data-dir="en-es" aria-pressed="false">EN → ES</button>
+        </div>
+        <div class="ctrl-inline">
+          <span class="seg-label">Ronda</span>
+          <div class="seg" id="vLen">
+            <button data-len="10" aria-pressed="true">10</button>
+            <button data-len="25" aria-pressed="false">25</button>
+            <button data-len="50" aria-pressed="false">50</button>
+          </div>
+        </div>
+        <div class="score">
+          <div>Aciertos<b id="vScore">0</b></div>
+          <div>Racha<b id="vStreak">0</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="bar"><i id="vBar"></i></div>
+    <div id="vBody"></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="wrap" id="practica">
+  <p class="eyebrow">Práctica · conjugación</p>
+  <h2>Completa la oración</h2>
+  <p class="lede">Las preguntas se generan solas a partir de los verbos y los doce tiempos de esta página. A veces falta el verbo principal, a veces el auxiliar. Si fallas, te digo la regla.</p>
+  <div class="game">
+    <div class="game-top">
+      <div class="chips" id="pTimes"></div>
+      <div class="game-row">
+        <div class="seg" id="pHint">
+          <button data-hint="on" aria-pressed="true">Con pista</button>
+          <button data-hint="off" aria-pressed="false">Sin pista</button>
+        </div>
+        <div class="ctrl-inline">
+          <span class="seg-label">Ronda</span>
+          <div class="seg" id="pLen">
+            <button data-len="10" aria-pressed="true">10</button>
+            <button data-len="25" aria-pressed="false">25</button>
+            <button data-len="50" aria-pressed="false">50</button>
+          </div>
+        </div>
+        <div class="score">
+          <div>Aciertos<b id="pScore">0</b></div>
+          <div>Racha<b id="pStreak">0</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="bar"><i id="pBar"></i></div>
+    <div id="pBody"></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p style="margin:0">Página de referencia offline: guárdala y ábrela en cualquier navegador. Los ejemplos se generan a partir del verbo, el sujeto y la forma que elijas arriba.</p>
+</footer>
+
+<script>
+/* ================= DATOS ================= */
+const FORMS = [
+  {k:'base',  label:'Forma base / infinitive', color:'var(--f-base)',  note:'La que ves en el diccionario: to speak.'},
+  {k:'third', label:'3ª persona · -s',         color:'var(--f-third)', note:'Solo con he / she / it en presente simple.'},
+  {k:'past',  label:'Past simple',             color:'var(--f-past)',  note:'Pasado terminado. Nunca lleva auxiliar.'},
+  {k:'pp',    label:'Past participle',         color:'var(--f-pp)',    note:'Perfectos, pasiva y adjetivo. Siempre con auxiliar.'},
+  {k:'ing',   label:'Gerundio · -ing',         color:'var(--f-ing)',   note:'Acción en curso, con el verbo be.'}
+];
+
+const VERBS = [
+  {base:'speak', third:'speaks', past:'spoke', pp:'spoken', ing:'speaking', obj:'English', es:'hablar', reg:false},
+  {base:'write', third:'writes', past:'wrote', pp:'written', ing:'writing', obj:'the report', es:'escribir', reg:false},
+  {base:'build', third:'builds', past:'built', pp:'built', ing:'building', obj:'an integration', es:'construir', reg:false},
+  {base:'run', third:'runs', past:'ran', pp:'run', ing:'running', obj:'the tests', es:'correr / ejecutar', reg:false},
+  {base:'break', third:'breaks', past:'broke', pp:'broken', ing:'breaking', obj:'the build', es:'romper', reg:false},
+  {base:'send', third:'sends', past:'sent', pp:'sent', ing:'sending', obj:'the invoice', es:'enviar', reg:false},
+  {base:'read', third:'reads', past:'read', pp:'read', ing:'reading', obj:'the documentation', es:'leer', reg:false},
+  {base:'go', third:'goes', past:'went', pp:'gone', ing:'going', obj:'to the office', es:'ir', reg:false},
+  {base:'eat', third:'eats', past:'ate', pp:'eaten', ing:'eating', obj:'breakfast', es:'comer', reg:false},
+  {base:'take', third:'takes', past:'took', pp:'taken', ing:'taking', obj:'the bus', es:'tomar', reg:false},
+  {base:'see', third:'sees', past:'saw', pp:'seen', ing:'seeing', obj:'the results', es:'ver', reg:false},
+  {base:'make', third:'makes', past:'made', pp:'made', ing:'making', obj:'a decision', es:'hacer', reg:false},
+  {base:'give', third:'gives', past:'gave', pp:'given', ing:'giving', obj:'feedback', es:'dar', reg:false},
+  {base:'know', third:'knows', past:'knew', pp:'known', ing:'knowing', obj:'the answer', es:'saber / conocer', reg:false, stative:true},
+  {base:'choose', third:'chooses', past:'chose', pp:'chosen', ing:'choosing', obj:'a database', es:'elegir', reg:false},
+  {base:'drive', third:'drives', past:'drove', pp:'driven', ing:'driving', obj:'to work', es:'conducir', reg:false},
+  {base:'buy', third:'buys', past:'bought', pp:'bought', ing:'buying', obj:'the tickets', es:'comprar', reg:false},
+  {base:'think', third:'thinks', past:'thought', pp:'thought', ing:'thinking', obj:'about the design', es:'pensar', reg:false},
+  {base:'pay', third:'pays', past:'paid', pp:'paid', ing:'paying', obj:'the invoice', es:'pagar', reg:false},
+  {base:'begin', third:'begins', past:'began', pp:'begun', ing:'beginning', obj:'the migration', es:'empezar', reg:false},
+  {base:'find', third:'finds', past:'found', pp:'found', ing:'finding', obj:'the error', es:'encontrar', reg:false},
+  {base:'lose', third:'loses', past:'lost', pp:'lost', ing:'losing', obj:'the connection', es:'perder', reg:false},
+  {base:'bring', third:'brings', past:'brought', pp:'brought', ing:'bringing', obj:'the laptop', es:'traer', reg:false},
+  {base:'teach', third:'teaches', past:'taught', pp:'taught', ing:'teaching', obj:'the new team', es:'enseñar', reg:false},
+  {base:'tell', third:'tells', past:'told', pp:'told', ing:'telling', obj:'the truth', es:'contar / decir', reg:false},
+  {base:'sell', third:'sells', past:'sold', pp:'sold', ing:'selling', obj:'the old car', es:'vender', reg:false},
+  {base:'keep', third:'keeps', past:'kept', pp:'kept', ing:'keeping', obj:'the logs', es:'guardar / mantener', reg:false},
+  {base:'leave', third:'leaves', past:'left', pp:'left', ing:'leaving', obj:'the office', es:'salir / dejar', reg:false},
+  {base:'meet', third:'meets', past:'met', pp:'met', ing:'meeting', obj:'the client', es:'reunirse con', reg:false},
+  {base:'win', third:'wins', past:'won', pp:'won', ing:'winning', obj:'the contract', es:'ganar', reg:false},
+  {base:'hold', third:'holds', past:'held', pp:'held', ing:'holding', obj:'the meeting', es:'sostener / celebrar', reg:false},
+  {base:'understand', third:'understands', past:'understood', pp:'understood', ing:'understanding', obj:'the problem', es:'entender', reg:false, stative:true},
+  {base:'catch', third:'catches', past:'caught', pp:'caught', ing:'catching', obj:'the bug', es:'atrapar', reg:false},
+  {base:'feel', third:'feels', past:'felt', pp:'felt', ing:'feeling', obj:'better', es:'sentir', reg:false},
+  {base:'sleep', third:'sleeps', past:'slept', pp:'slept', ing:'sleeping', obj:'eight hours', es:'dormir', reg:false},
+  {base:'hear', third:'hears', past:'heard', pp:'heard', ing:'hearing', obj:'the news', es:'oír', reg:false, stative:true},
+  {base:'spend', third:'spends', past:'spent', pp:'spent', ing:'spending', obj:'two hours on it', es:'gastar / pasar', reg:false},
+  {base:'get', third:'gets', past:'got', pp:'gotten', ing:'getting', obj:'the access', es:'conseguir', reg:false},
+  {base:'wear', third:'wears', past:'wore', pp:'worn', ing:'wearing', obj:'a jacket', es:'llevar puesto', reg:false},
+  {base:'fly', third:'flies', past:'flew', pp:'flown', ing:'flying', obj:'to Mexico', es:'volar', reg:false},
+  {base:'forget', third:'forgets', past:'forgot', pp:'forgotten', ing:'forgetting', obj:'the password', es:'olvidar', reg:false},
+  {base:'drink', third:'drinks', past:'drank', pp:'drunk', ing:'drinking', obj:'coffee', es:'beber', reg:false},
+  {base:'sing', third:'sings', past:'sang', pp:'sung', ing:'singing', obj:'a song', es:'cantar', reg:false},
+  {base:'grow', third:'grows', past:'grew', pp:'grown', ing:'growing', obj:'vegetables', es:'cultivar / crecer', reg:false},
+  {base:'throw', third:'throws', past:'threw', pp:'thrown', ing:'throwing', obj:'the ball', es:'lanzar', reg:false},
+  {base:'come', third:'comes', past:'came', pp:'come', ing:'coming', obj:'to the meeting', es:'venir', reg:false},
+  {base:'become', third:'becomes', past:'became', pp:'become', ing:'becoming', obj:'a manager', es:'convertirse en', reg:false},
+  {base:'put', third:'puts', past:'put', pp:'put', ing:'putting', obj:'the files in the folder', es:'poner', reg:false},
+  {base:'cut', third:'cuts', past:'cut', pp:'cut', ing:'cutting', obj:'the costs', es:'cortar / recortar', reg:false},
+  {base:'sit', third:'sits', past:'sat', pp:'sat', ing:'sitting', obj:'in the front row', es:'sentarse', reg:false},
+  {base:'hide', third:'hides', past:'hid', pp:'hidden', ing:'hiding', obj:'the key', es:'esconder', reg:false},
+  {base:'ride', third:'rides', past:'rode', pp:'ridden', ing:'riding', obj:'a bike', es:'montar', reg:false},
+  {base:'say', third:'says', past:'said', pp:'said', ing:'saying', obj:'the same thing', es:'decir', reg:false},
+  {base:'deploy', third:'deploys', past:'deployed', pp:'deployed', ing:'deploying', obj:'the new version', es:'desplegar', reg:true},
+  {base:'fix', third:'fixes', past:'fixed', pp:'fixed', ing:'fixing', obj:'the bug', es:'arreglar', reg:true},
+  {base:'work', third:'works', past:'worked', pp:'worked', ing:'working', obj:'on the API', es:'trabajar', reg:true},
+  {base:'study', third:'studies', past:'studied', pp:'studied', ing:'studying', obj:'grammar', es:'estudiar', reg:true},
+  {base:'learn', third:'learns', past:'learned', pp:'learned', ing:'learning', obj:'a new framework', es:'aprender', reg:true},
+  {base:'call', third:'calls', past:'called', pp:'called', ing:'calling', obj:'the client', es:'llamar', reg:true},
+  {base:'watch', third:'watches', past:'watched', pp:'watched', ing:'watching', obj:'the tutorial', es:'ver / mirar', reg:true},
+  {base:'travel', third:'travels', past:'traveled', pp:'traveled', ing:'traveling', obj:'to Mexico', es:'viajar', reg:true},
+  {base:'play', third:'plays', past:'played', pp:'played', ing:'playing', obj:'the guitar', es:'jugar / tocar', reg:true},
+  {base:'cook', third:'cooks', past:'cooked', pp:'cooked', ing:'cooking', obj:'dinner', es:'cocinar', reg:true},
+  {base:'clean', third:'cleans', past:'cleaned', pp:'cleaned', ing:'cleaning', obj:'the kitchen', es:'limpiar', reg:true},
+  {base:'open', third:'opens', past:'opened', pp:'opened', ing:'opening', obj:'a ticket', es:'abrir', reg:true},
+  {base:'close', third:'closes', past:'closed', pp:'closed', ing:'closing', obj:'the issue', es:'cerrar', reg:true},
+  {base:'answer', third:'answers', past:'answered', pp:'answered', ing:'answering', obj:'the email', es:'responder', reg:true},
+  {base:'finish', third:'finishes', past:'finished', pp:'finished', ing:'finishing', obj:'the sprint', es:'terminar', reg:true},
+  {base:'start', third:'starts', past:'started', pp:'started', ing:'starting', obj:'a new project', es:'empezar', reg:true},
+  {base:'try', third:'tries', past:'tried', pp:'tried', ing:'trying', obj:'a different approach', es:'intentar', reg:true},
+  {base:'need', third:'needs', past:'needed', pp:'needed', ing:'needing', obj:'more time', es:'necesitar', reg:true, stative:true},
+  {base:'want', third:'wants', past:'wanted', pp:'wanted', ing:'wanting', obj:'a raise', es:'querer', reg:true, stative:true},
+  {base:'help', third:'helps', past:'helped', pp:'helped', ing:'helping', obj:'the junior dev', es:'ayudar', reg:true},
+  {base:'test', third:'tests', past:'tested', pp:'tested', ing:'testing', obj:'the endpoint', es:'probar', reg:true},
+  {base:'plan', third:'plans', past:'planned', pp:'planned', ing:'planning', obj:'the release', es:'planificar', reg:true},
+  {base:'share', third:'shares', past:'shared', pp:'shared', ing:'sharing', obj:'the document', es:'compartir', reg:true},
+  {base:'review', third:'reviews', past:'reviewed', pp:'reviewed', ing:'reviewing', obj:'the pull request', es:'revisar', reg:true},
+  {base:'move', third:'moves', past:'moved', pp:'moved', ing:'moving', obj:'the deadline', es:'mover', reg:true},
+  {base:'add', third:'adds', past:'added', pp:'added', ing:'adding', obj:'a new feature', es:'agregar', reg:true},
+  {base:'check', third:'checks', past:'checked', pp:'checked', ing:'checking', obj:'the logs', es:'revisar', reg:true},
+  {base:'ask', third:'asks', past:'asked', pp:'asked', ing:'asking', obj:'a question', es:'preguntar', reg:true},
+  {base:'walk', third:'walks', past:'walked', pp:'walked', ing:'walking', obj:'to the park', es:'caminar', reg:true},
+  {base:'listen', third:'listens', past:'listened', pp:'listened', ing:'listening', obj:'to music', es:'escuchar', reg:true},
+  {base:'live', third:'lives', past:'lived', pp:'lived', ing:'living', obj:'in Guatemala', es:'vivir', reg:true},
+  {base:'change', third:'changes', past:'changed', pp:'changed', ing:'changing', obj:'the config', es:'cambiar', reg:true}
+];
+
+const bePres = s => s==='I' ? 'am' : (s==='she' ? 'is' : 'are');
+const bePast = s => (s==='I'||s==='she') ? 'was' : 'were';
+const havePres = s => s==='she' ? 'has' : 'have';
+const doPres = s => s==='she' ? 'does' : 'do';
+const isThird = s => s==='she';
+
+const TENSES = [
+  {time:'Presente', aspect:'Simple', aux:[], main:'auto3', doAux:doPres,
+   tail:'every day', rule:'presente simple = sujeto + verbo, con -s solo en he/she/it. No lleva auxiliar en afirmativa; en negativa y pregunta entra do/does y el verbo vuelve a la forma base.',
+   note:'Rutinas, hechos y verdades generales. Es el único tiempo con la -s de tercera persona.'},
+  {time:'Presente', aspect:'Continuous', aux:[bePres], main:'ing',
+   tail:'right now', rule:'presente continuo = am/is/are + verbo -ing. La forma -ing solo aparece detrás del verbo be.',
+   note:'Acción en curso ahora mismo o en esta temporada de tu vida.'},
+  {time:'Presente', aspect:'Perfect', aux:[havePres], main:'pp',
+   tail:'since 2019', rule:'presente perfecto = have/has + past participle. Detrás de have nunca va el pasado simple.',
+   note:'Pasado sin fecha concreta que sigue tocando el presente. Si dices cuándo, cambia a past simple.'},
+  {time:'Presente', aspect:'Perfect continuous', aux:[havePres,'been'], main:'ing',
+   tail:'for two hours', rule:'have/has + been + verbo -ing. El participio se lo lleva be (been) y el verbo principal queda en -ing.',
+   note:'Empezó antes y sigue pasando. Aquí lo importante es cuánto ha durado.'},
+
+  {time:'Pasado', aspect:'Simple', aux:[], main:'past', doAux:()=>'did',
+   tail:'yesterday', rule:'pasado simple = la forma de pasado, sola y sin auxiliar. En negativa y pregunta entra did y el verbo vuelve a la forma base.',
+   note:'Acción terminada en un momento definido. En negativa y pregunta el verbo vuelve a la forma base.'},
+  {time:'Pasado', aspect:'Continuous', aux:[bePast], main:'ing',
+   tail:'when you called', rule:'pasado continuo = was/were + verbo -ing. Otra vez: -ing solo detrás de be.',
+   note:'Estaba pasando cuando algo la interrumpió. Es el fondo de la escena.'},
+  {time:'Pasado', aspect:'Perfect', aux:[()=>'had'], main:'pp',
+   tail:'before the meeting', rule:'pasado perfecto = had + past participle, igual para todos los sujetos.',
+   note:'El pasado del pasado: ocurrió antes de otro momento pasado que ya mencionaste.'},
+  {time:'Pasado', aspect:'Perfect continuous', aux:[()=>'had','been'], main:'ing',
+   tail:'for two hours before the meeting', rule:'had + been + verbo -ing.',
+   note:'Cuánto llevaba durando algo hasta un punto del pasado.'},
+
+  {time:'Futuro', aspect:'Simple', aux:[()=>'will'], main:'base',
+   tail:'tomorrow', rule:'futuro simple = will + forma base. Después de will nunca va -ing, ni -s, ni pasado.',
+   note:'Decisiones del momento, predicciones y promesas. Después de will siempre va la forma base.'},
+  {time:'Futuro', aspect:'Continuous', aux:[()=>'will','be'], main:'ing',
+   tail:'at nine tomorrow', rule:'futuro continuo = will + be + verbo -ing. El -ing no viene de will, viene de be.',
+   note:'Estará en curso en un momento concreto del futuro.'},
+  {time:'Futuro', aspect:'Perfect', aux:[()=>'will','have'], main:'pp',
+   tail:'by Friday', rule:'futuro perfecto = will + have + past participle. Have vuelve a su forma base porque va detrás de will.',
+   note:'Estará terminado antes de una fecha futura. Fíjate: have vuelve a su forma base tras will.'},
+  {time:'Futuro', aspect:'Perfect continuous', aux:[()=>'will','have','been'], main:'ing',
+   tail:'for a year by Friday', rule:'will + have + been + verbo -ing. Es la cadena completa: will manda la base, have manda el participio (been) y be manda el -ing.',
+   note:'Duración acumulada hasta un punto del futuro. El más raro de los doce.'}
+];
+
+const FORM_LABEL = {base:'forma base', third:'verbo + s', past:'past simple', pp:'past participle', ing:'verbo + ing'};
+
+const IRREGULARS = [
+  {p:'A–A–A', desc:'Las tres formas son iguales. Los más fáciles.', rows:[
+    ['put','put','put','poner'],['cut','cut','cut','cortar'],['let','let','let','dejar / permitir'],
+    ['set','set','set','fijar / configurar'],['hit','hit','hit','golpear'],['cost','cost','cost','costar'],
+    ['shut','shut','shut','cerrar'],['hurt','hurt','hurt','doler / lastimar'],['read','read','read','leer (cambia la pronunciación: /riːd/ → /red/)']
+  ]},
+  {p:'A–B–B', desc:'Pasado y participio son iguales. Es el grupo más grande: aprende dos formas, no tres.', rows:[
+    ['buy','bought','bought','comprar'],['bring','brought','brought','traer'],['think','thought','thought','pensar'],
+    ['teach','taught','taught','enseñar'],['catch','caught','caught','atrapar'],['build','built','built','construir'],
+    ['send','sent','sent','enviar'],['spend','spent','spent','gastar / pasar tiempo'],['make','made','made','hacer'],
+    ['pay','paid','paid','pagar'],['say','said','said','decir'],['tell','told','told','contar / decir a alguien'],
+    ['sell','sold','sold','vender'],['find','found','found','encontrar'],['keep','kept','kept','mantener'],
+    ['leave','left','left','irse / dejar'],['meet','met','met','conocer / reunirse'],['sit','sat','sat','sentarse'],
+    ['win','won','won','ganar'],['hold','held','held','sostener'],['feel','felt','felt','sentir'],
+    ['lose','lost','lost','perder'],['sleep','slept','slept','dormir'],['stand','stood','stood','estar de pie'],
+    ['understand','understood','understood','entender'],['hear','heard','heard','oír'],['have','had','had','tener']
+  ]},
+  {p:'A–B–A', desc:'El participio vuelve a la forma base. Son pocos: vale la pena memorizarlos sueltos.', rows:[
+    ['come','came','come','venir'],['become','became','become','convertirse en'],['run','ran','run','correr / ejecutar']
+  ]},
+  {p:'A–B–C', desc:'Tres formas distintas. Aquí es donde de verdad importa el participio.', rows:[
+    ['be','was / were','been','ser / estar'],['begin','began','begun','empezar'],['break','broke','broken','romper'],
+    ['choose','chose','chosen','elegir'],['do','did','done','hacer'],['drink','drank','drunk','beber'],
+    ['drive','drove','driven','conducir'],['eat','ate','eaten','comer'],['fall','fell','fallen','caer'],
+    ['fly','flew','flown','volar'],['forget','forgot','forgotten','olvidar'],['freeze','froze','frozen','congelar'],
+    ['get','got','gotten','conseguir'],['give','gave','given','dar'],['go','went','gone','ir'],
+    ['grow','grew','grown','crecer'],['hide','hid','hidden','esconder'],['know','knew','known','saber / conocer'],
+    ['ride','rode','ridden','montar'],['rise','rose','risen','subir / elevarse'],['see','saw','seen','ver'],
+    ['sing','sang','sung','cantar'],['speak','spoke','spoken','hablar'],['swim','swam','swum','nadar'],
+    ['take','took','taken','tomar'],['throw','threw','thrown','lanzar'],['wear','wore','worn','llevar puesto'],
+    ['write','wrote','written','escribir']
+  ]}
+];
+
+/* ================= ESTADO ================= */
+let state = {verb:VERBS[1], subj:'she', mode:'aff'};
+
+/* ================= HELPERS ================= */
+const el = (tag, cls, html) => {
+  const n = document.createElement(tag);
+  if(cls) n.className = cls;
+  if(html !== undefined) n.innerHTML = html;
+  return n;
+};
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+function formKey(tense, subj){
+  if(tense.main === 'auto3') return isThird(subj) ? 'third' : 'base';
+  return tense.main;
+}
+
+/* Devuelve {sentence, formula} como arrays de tokens {t, c} */
+function build(tense, verb, subj, mode){
+  let aux = tense.aux.map(a => typeof a === 'function' ? a(subj) : a);
+  let key = formKey(tense, subj);
+  let mainWord = verb[key];
+  let mainLabel = FORM_LABEL[key];
+
+  // Los tiempos simples piden do/does/did en negativa y pregunta
+  if(aux.length === 0 && mode !== 'aff'){
+    aux = [tense.doAux(subj)];
+    key = 'base'; mainWord = verb.base; mainLabel = FORM_LABEL.base;
+  }
+
+  const S = {t:subj, c:'tk-subj', r:'subj'};
+  const M = {t:mainWord, c:'tk-form f-'+key, r:'main'};
+  const ML = {t:mainLabel, c:'tk-form f-'+key, r:'main'};
+  const A = w => ({t:w, c:'tk-aux', r:'aux'});
+  const tail = [{t:verb.obj, c:'', r:'rest'},{t:tense.tail, c:'', r:'rest'}].filter(x=>x.t);
+
+  let seq, form;
+  if(mode === 'aff'){
+    seq  = [S, ...aux.map(A), M, ...tail];
+    form = [S, ...aux.map(A), ML];
+  } else if(mode === 'neg'){
+    seq  = [S, A(aux[0]), {t:'not', c:'', r:'rest'}, ...aux.slice(1).map(A), M, ...tail];
+    form = [S, A(aux[0]), {t:'not', c:'', r:'rest'}, ...aux.slice(1).map(A), ML];
+  } else {
+    seq  = [A(aux[0]), S, ...aux.slice(1).map(A), M, ...tail];
+    form = [A(aux[0]), S, ...aux.slice(1).map(A), ML];
+  }
+
+  const end = mode === 'q' ? '?' : '.';
+  const sentence = seq.map((tk,i) =>
+    `<span class="${tk.c}">${esc(i===0 ? cap(tk.t) : tk.t)}</span>`
+  ).join(' ') + end;
+
+  const formula = form.map(tk => `<span class="${tk.c}">${esc(tk.t)}</span>`)
+                      .join('<span class="op">+</span>');
+  return {sentence, formula, key, seq, end};
+}
+
+/* ================= RENDER ================= */
+function renderHero(){
+  const box = document.getElementById('heroKeys');
+  box.innerHTML = '';
+  const v = VERBS[0]; // speak, como muestra fija del hero
+  FORMS.forEach(f => {
+    const k = el('div','key');
+    k.style.setProperty('--kc', f.color);
+    k.innerHTML = `<span class="kl">${f.label}</span><span class="kv">${v[f.k]}</span><span class="kn">${f.note}</span>`;
+    box.appendChild(k);
+  });
+}
+
+function renderVerbCard(){
+  const v = state.verb;
+  document.getElementById('verbTitle').textContent = '"' + v.base + '"';
+  document.getElementById('verbGloss').innerHTML =
+    `${v.es} · <span class="badge">${v.reg ? 'regular · -ed' : 'irregular'}</span>` +
+    (v.reg ? '' : ' <span class="badge">memorizar las 3 formas</span>');
+
+  const grid = document.getElementById('formsGrid');
+  grid.innerHTML = '';
+  FORMS.forEach(f => {
+    const c = el('div','form-cell');
+    c.style.setProperty('--fc', f.color);
+    c.innerHTML = `<div class="fl">${f.label}</div><div class="fv">${v[f.k]}</div>`;
+    grid.appendChild(c);
+  });
+}
+
+function renderMatrix(){
+  const m = document.getElementById('matrix');
+  m.innerHTML = '';
+  const aspects = ['Simple','Continuous','Perfect','Perfect continuous'];
+  const times = ['Pasado','Presente','Futuro'];
+
+  m.appendChild(el('div','mx-head',''));
+  aspects.forEach(a => m.appendChild(el('div','mx-head',a)));
+
+  times.forEach(t => {
+    m.appendChild(el('div','mx-rowlabel',t));
+    aspects.forEach(a => {
+      const tense = TENSES.find(x => x.time === t && x.aspect === a);
+      const {sentence, formula} = build(tense, state.verb, state.subj, state.mode);
+      const cell = el('div','cell');
+      let warn = '';
+      if(state.verb.stative && a.includes('ontinuous')){
+        warn = `<div class="warn">Ojo: "${state.verb.base}" es un verbo de estado y casi nunca se usa en continuo.</div>`;
+      }
+      cell.innerHTML =
+        `<div class="cell-aspect">${t} · ${a}</div>` +
+        `<div class="formula">${formula}</div>` +
+        `<div class="sentence">${sentence}</div>` +
+        warn +
+        `<div class="note">${tense.note}</div>`;
+      m.appendChild(cell);
+    });
+  });
+}
+
+function renderIrregulars(filter){
+  const wrap = document.getElementById('patterns');
+  wrap.innerHTML = '';
+  const f = (filter || '').trim().toLowerCase();
+  let total = 0;
+
+  IRREGULARS.forEach(group => {
+    const rows = group.rows.filter(r => !f || r.join(' ').toLowerCase().includes(f));
+    if(!rows.length) return;
+    total += rows.length;
+    const sec = el('div','pattern');
+    sec.innerHTML =
+      `<div class="pattern-head">
+         <span class="pattern-code">${group.p}</span>
+         <span class="pattern-desc">${group.desc}</span>
+       </div>`;
+    const table = el('table');
+    table.innerHTML =
+      `<thead><tr><th>Base / infinitive</th><th>Past simple</th><th>Past participle</th><th>Significado</th></tr></thead>`;
+    const tb = el('tbody');
+    rows.forEach(r => {
+      const tr = el('tr');
+      tr.innerHTML = `<td class="c1">${r[0]}</td><td class="c2">${r[1]}</td><td class="c3">${r[2]}</td><td class="es">${r[3]}</td>`;
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    sec.appendChild(table);
+    wrap.appendChild(sec);
+  });
+
+  if(!total) wrap.appendChild(el('div','empty','Ningún verbo coincide con ese filtro.'));
+}
+
+/* ================= JUEGO 1 · VOCABULARIO ================= */
+const VOCAB = {
+  'Animales':[['dog','perro'],['cat','gato'],['horse','caballo'],['bird','pájaro'],
+    ['fish','pez','El plural normal es fish, no fishes.'],['cow','vaca'],['bull','toro'],['pig','cerdo'],
+    ['sheep','oveja','Singular y plural son iguales: one sheep, two sheep.'],['goat','cabra'],
+    ['chicken','gallina'],['rooster','gallo'],['duck','pato'],['turkey','chompipe / pavo'],['rabbit','conejo'],
+    ['mouse','ratón','Plural irregular: mice.'],['rat','rata'],['bear','oso'],
+    ['wolf','lobo','Plural: wolves, con -ves.'],['fox','zorro'],['lion','león'],['tiger','tigre'],
+    ['elephant','elefante'],['giraffe','jirafa'],['monkey','mono'],['snake','serpiente'],['spider','araña'],
+    ['bee','abeja'],['ant','hormiga'],['fly','mosca','Como verbo, fly es volar.'],['mosquito','zancudo'],
+    ['butterfly','mariposa'],['frog','rana'],['turtle','tortuga'],['lizard','lagartija'],['crocodile','cocodrilo'],
+    ['shark','tiburón'],['whale','ballena'],['dolphin','delfín'],['octopus','pulpo'],['crab','cangrejo'],
+    ['deer','venado','Singular y plural iguales: one deer, two deer.'],['squirrel','ardilla'],['bat','murciélago'],
+    ['owl','búho'],['eagle','águila'],['parrot','loro'],['snail','caracol'],['worm','lombriz'],['goose','ganso','Plural irregular: geese.']],
+
+  'Frutas y verduras':[['apple','manzana'],['banana','banano'],['orange','naranja'],['strawberry','fresa'],
+    ['grape','uva'],['watermelon','sandía'],['pineapple','piña'],['peach','durazno'],['pear','pera'],
+    ['lemon','limón amarillo'],['lime','limón verde'],['cherry','cereza'],['blueberry','arándano'],['plum','ciruela'],
+    ['avocado','aguacate'],['coconut','coco'],['mango','mango'],['papaya','papaya'],['melon','melón'],
+    ['blackberry','mora'],['raspberry','frambuesa'],['carrot','zanahoria'],['onion','cebolla'],['garlic','ajo'],
+    ['potato','papa','Plural: potatoes, con -es.'],['tomato','tomate','Plural: tomatoes, con -es.'],
+    ['lettuce','lechuga'],['corn','maíz / elote','No lleva plural: some corn.'],['cucumber','pepino'],
+    ['pumpkin','ayote / calabaza'],['mushroom','hongo'],['spinach','espinaca'],['broccoli','brócoli'],['chili','chile']],
+
+  'Colores':[['red','rojo'],['blue','azul'],['green','verde'],['yellow','amarillo'],['black','negro'],
+    ['white','blanco'],['orange','anaranjado'],['purple','morado'],['pink','rosado'],['brown','café / marrón'],
+    ['gray','gris','En inglés británico se escribe grey.'],['silver','plateado'],['gold','dorado'],
+    ['dark','oscuro'],['light','claro'],['navy','azul marino'],['turquoise','turquesa'],['beige','beige']],
+
+  'Casa':[['kitchen','cocina'],['bedroom','dormitorio'],['bathroom','baño'],['living room','sala'],['door','puerta'],
+    ['window','ventana'],['table','mesa'],['chair','silla'],['bed','cama'],['floor','piso'],['roof','techo'],
+    ['wall','pared'],['stairs','gradas / escaleras'],['key','llave'],['mirror','espejo'],['towel','toalla'],
+    ['drawer','gaveta'],['blanket','cobija'],['pillow','almohada'],['curtain','cortina'],['sink','lavamanos'],
+    ['fridge','refrigeradora'],['oven','horno'],['garden','jardín'],['garage','garaje'],['lamp','lámpara'],
+    ['sofa','sofá'],['shelf','estante','Plural: shelves.'],['closet','clóset'],['broom','escoba'],['yard','patio']],
+
+  'Cocina':[['spoon','cuchara'],['fork','tenedor'],['knife','cuchillo','Plural: knives.'],['plate','plato'],
+    ['bowl','tazón'],['glass','vaso'],['cup','taza'],['pan','sartén'],['pot','olla'],['napkin','servilleta'],
+    ['tray','bandeja'],['blender','licuadora'],['stove','estufa'],['lid','tapadera']],
+
+  'Comida':[['bread','pan'],['cheese','queso'],['egg','huevo'],['rice','arroz'],['beans','frijoles'],
+    ['beef','carne de res'],['pork','carne de cerdo'],['chicken','pollo'],['fish','pescado'],['soup','sopa'],
+    ['milk','leche'],['water','agua'],['sugar','azúcar'],['salt','sal'],['black pepper','pimienta'],
+    ['butter','mantequilla'],['oil','aceite'],['flour','harina'],['cake','pastel'],['cookie','galleta'],
+    ['ice cream','helado'],['candy','dulce'],['sandwich','sándwich'],['breakfast','desayuno'],['lunch','almuerzo'],
+    ['dinner','cena'],['snack','refacción'],['juice','jugo'],['coffee','café'],['tea','té']],
+
+  'Cuerpo':[['head','cabeza'],['hand','mano'],['arm','brazo'],['leg','pierna'],
+    ['foot','pie','Plural irregular: feet.'],['eye','ojo'],['ear','oreja'],['mouth','boca'],['nose','nariz'],
+    ['hair','cabello','No lleva plural: her hair is long.'],['finger','dedo de la mano'],['toe','dedo del pie'],
+    ['back','espalda'],['shoulder','hombro'],['knee','rodilla'],['tooth','diente','Plural irregular: teeth.'],
+    ['heart','corazón'],['skin','piel'],['bone','hueso'],['blood','sangre'],['neck','cuello'],['chest','pecho'],
+    ['stomach','estómago'],['elbow','codo'],['wrist','muñeca'],['ankle','tobillo'],['lip','labio'],
+    ['tongue','lengua'],['eyebrow','ceja'],['beard','barba'],['chin','barbilla'],['cheek','mejilla']],
+
+  'Naturaleza':[['rain','lluvia'],['snow','nieve'],['wind','viento'],['cloud','nube'],['sun','sol'],['moon','luna'],
+    ['star','estrella'],['tree','árbol'],['flower','flor'],['river','río'],['mountain','montaña'],['beach','playa'],
+    ['sky','cielo'],['storm','tormenta'],['leaf','hoja','Plural: leaves.'],['sand','arena'],['lake','lago'],
+    ['sea','mar'],['forest','bosque'],['island','isla'],['fire','fuego'],['earth','tierra'],['ice','hielo'],
+    ['fog','neblina'],['wave','ola'],['valley','valle'],['desert','desierto','Postre es dessert, con dos eses.'],
+    ['hill','cerro'],['field','campo'],['rock','roca'],['mud','lodo'],['rainbow','arcoíris'],['thunder','trueno'],
+    ['lightning','relámpago']],
+
+  'Ropa':[['shirt','camisa'],['t-shirt','playera'],['pants','pantalón','Siempre en plural: these pants.'],
+    ['jeans','jeans'],['dress','vestido'],['skirt','falda'],['shoes','zapatos'],['socks','calcetines'],
+    ['hat','sombrero'],['cap','gorra'],['jacket','chumpa / chaqueta'],['coat','abrigo'],['sweater','suéter'],
+    ['belt','cinturón'],['glove','guante'],['scarf','bufanda'],['tie','corbata'],['boots','botas'],
+    ['glasses','lentes','Siempre en plural.'],['watch','reloj de pulsera'],['ring','anillo'],['pocket','bolsa / bolsillo']],
+
+  'Ciudad':[['street','calle'],['avenue','avenida'],['building','edificio'],['bridge','puente'],['park','parque'],
+    ['church','iglesia'],['school','escuela'],['hospital','hospital'],['bank','banco'],['store','tienda'],
+    ['market','mercado'],['library','biblioteca','Librería es bookstore.'],['pharmacy','farmacia'],
+    ['restaurant','restaurante'],['airport','aeropuerto'],['station','estación'],['corner','esquina'],
+    ['sidewalk','banqueta / acera'],['traffic light','semáforo'],['neighborhood','colonia / barrio'],
+    ['mall','centro comercial'],['downtown','centro de la ciudad'],['crowd','multitud'],['sign','rótulo / letrero']],
+
+  'Transporte':[['car','carro'],['bus','camioneta / bus'],['train','tren'],['plane','avión'],['bike','bicicleta'],
+    ['motorcycle','motocicleta'],['truck','camión'],['boat','lancha'],['ship','barco'],['taxi','taxi'],
+    ['subway','metro'],['ticket','boleto'],['driver','piloto / conductor'],['road','carretera'],['wheel','rueda'],
+    ['gas','gasolina'],['seat','asiento'],['trip','viaje']],
+
+  'Familia':[['mother','madre'],['father','padre'],['son','hijo'],['daughter','hija'],['brother','hermano'],
+    ['sister','hermana'],['grandmother','abuela'],['grandfather','abuelo'],['uncle','tío'],['aunt','tía'],
+    ['cousin','primo / prima','Sirve para los dos géneros.'],['nephew','sobrino'],['niece','sobrina'],
+    ['wife','esposa','Plural: wives.'],['husband','esposo'],['child','niño','Plural irregular: children.'],
+    ['parents','padres','Parientes en general son relatives.'],['neighbor','vecino'],['friend','amigo'],['twin','gemelo']],
+
+  'Calendario':[['Monday','lunes','Los días y meses siempre van con mayúscula en inglés.'],['Tuesday','martes'],
+    ['Wednesday','miércoles'],['Thursday','jueves'],['Friday','viernes'],['Saturday','sábado'],['Sunday','domingo'],
+    ['January','enero'],['February','febrero'],['March','marzo'],['April','abril'],['May','mayo'],['June','junio'],
+    ['July','julio'],['August','agosto'],['September','septiembre'],['October','octubre'],['November','noviembre'],
+    ['December','diciembre'],['today','hoy'],['tomorrow','mañana (el día siguiente)'],['yesterday','ayer'],
+    ['morning','mañana (parte del día)'],['afternoon','tarde'],['night','noche'],['week','semana'],['month','mes'],
+    ['year','año'],['hour','hora'],['minute','minuto'],['weekend','fin de semana']],
+
+  'Emociones':[['happy','feliz'],['sad','triste'],['angry','enojado'],['tired','cansado'],['scared','asustado'],
+    ['surprised','sorprendido'],['bored','aburrido','Bored es estar aburrido; boring es que aburre.'],
+    ['excited','emocionado'],['worried','preocupado'],['nervous','nervioso'],['proud','orgulloso'],
+    ['jealous','celoso'],['lonely','solo (con sentimiento de soledad)'],['calm','tranquilo'],['confused','confundido'],
+    ['embarrassed','avergonzado','Embarazada es pregnant.'],['grateful','agradecido'],['upset','molesto'],
+    ['relieved','aliviado'],['shy','tímido']],
+
+  'Adjetivos':[['big','grande'],['small','pequeño'],['long','largo'],['short','corto / bajo'],['tall','alto'],
+    ['fast','rápido'],['slow','lento'],['hot','caliente'],['cold','frío'],['warm','tibio'],['new','nuevo'],
+    ['old','viejo'],['young','joven'],['easy','fácil'],['hard','difícil / duro'],['cheap','barato'],
+    ['expensive','caro'],['clean','limpio'],['dirty','sucio'],['strong','fuerte'],['weak','débil'],['full','lleno'],
+    ['empty','vacío'],['loud','ruidoso'],['quiet','silencioso'],['heavy','pesado'],['light','ligero'],
+    ['wet','mojado'],['dry','seco'],['sharp','filoso']],
+
+  'Tecnología':[['computer','computadora'],['keyboard','teclado'],['screen','pantalla'],['mouse','ratón (de la computadora)'],
+    ['file','archivo'],['folder','carpeta'],['network','red'],['password','contraseña'],['database','base de datos'],
+    ['server','servidor'],['browser','navegador'],['code','código'],['bug','error de programación'],
+    ['update','actualización'],['backup','respaldo'],['cloud','nube'],['device','dispositivo'],['link','enlace'],
+    ['download','descarga'],['spreadsheet','hoja de cálculo'],['battery','batería'],['charger','cargador'],
+    ['printer','impresora'],['headphones','audífonos']],
+
+  'Trabajo':[['meeting','reunión'],['deadline','fecha límite'],['report','informe'],['team','equipo'],
+    ['manager','jefe'],['schedule','horario'],['task','tarea'],['budget','presupuesto'],['skill','habilidad'],
+    ['training','capacitación'],['interview','entrevista'],['salary','salario'],['customer','cliente'],
+    ['issue','problema / incidencia'],['warning','advertencia'],['deployment','despliegue'],['goal','meta'],
+    ['feedback','retroalimentación'],['raise','aumento de sueldo'],['coworker','compañero de trabajo'],
+    ['shift','turno'],['contract','contrato'],['invoice','factura'],['meeting room','sala de reuniones']],
+
+  'Escuela':[['teacher','maestro'],['student','estudiante'],['classroom','aula'],
+    ['homework','tarea','No lleva plural: some homework.'],['notebook','cuaderno'],['pencil','lápiz'],
+    ['pen','lapicero'],['eraser','borrador'],['ruler','regla'],['book','libro'],['page','página'],['test','examen'],
+    ['grade','nota'],['backpack','mochila'],['chalkboard','pizarrón'],['desk','escritorio'],['subject','materia'],
+    ['break','recreo'],['answer','respuesta'],['question','pregunta']],
+
+  'Falsos amigos':[
+    ['library','biblioteca','Librería, la tienda de libros, es bookstore.'],
+    ['actually','en realidad','Actualmente es currently o nowadays.'],
+    ['embarrassed','avergonzado','Embarazada es pregnant.'],
+    ['carpet','alfombra','Carpeta es folder.'],
+    ['exit','salida','Éxito es success.'],
+    ['fabric','tela','Fábrica es factory.'],
+    ['sensible','sensato','Sensible, que siente mucho, es sensitive.'],
+    ['realize','darse cuenta','Realizar una tarea es to carry out o to do.'],
+    ['support','apoyar','Soportar algo molesto es to put up with.'],
+    ['attend','asistir a','Atender a un cliente es to help o to serve.'],
+    ['record','grabar','Recordar es to remember.'],
+    ['rope','cuerda','Ropa es clothes.'],
+    ['soap','jabón','Sopa es soup.'],
+    ['large','grande (de tamaño)','Largo es long.'],
+    ['once','una vez','El número once es eleven.'],
+    ['introduce','presentar a alguien','Introducir un objeto es to insert.'],
+    ['assist','ayudar','Asistir a un evento es to attend.'],
+    ['collar','cuello de la camisa','El collar de joyería es necklace.'],
+    ['constipated','estreñido','Constipado, resfriado, se dice to have a cold.'],
+    ['parents','padres','Parientes es relatives.'],
+    ['idiom','modismo','Idioma es language.'],
+    ['argument','discusión','Argumento de una película es plot.']]
+};
+VOCAB['Verbos'] = VERBS.map(v => [v.base, v.es]);
+
+const rnd = a => a[Math.floor(Math.random()*a.length)];
+const shuffle = a => a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+const kOf = w => w[0]+'|'+w[1];
+
+const vg = {cat:'Animales', dir:'es-en', len:10, i:0, score:0, streak:0, missed:[], seen:new Set(), q:null, locked:false, cycled:false};
+
+function vPool(){
+  return vg.cat === 'Todas' ? Object.values(VOCAB).flat() : VOCAB[vg.cat];
+}
+function vNext(){
+  const pool = vPool();
+  let fresh = pool.filter(w => !vg.seen.has(kOf(w)));
+  vg.cycled = false;
+  if(!fresh.length){ vg.seen.clear(); fresh = pool; vg.cycled = true; }   // agotada la categoría, vuelta a empezar
+  const answer = rnd(fresh);
+  vg.seen.add(kOf(answer));
+
+  const side = vg.dir === 'es-en' ? 0 : 1;
+  const ask = side === 0 ? 1 : 0;
+  const opts = [answer];
+  let guard = 0;
+  while(opts.length < 4 && guard++ < 600){
+    const c = rnd(pool);
+    if(!opts.some(o => o[side] === c[side]) && c[ask] !== answer[ask]) opts.push(c);
+  }
+  vg.q = {answer, side, ask, opts:shuffle(opts), left:fresh.length - 1};
+  vg.locked = false;
+  vRender();
+}
+function vRender(){
+  const {answer, side, opts, left} = vg.q;
+  document.getElementById('vBody').innerHTML =
+    `<div class="prompt">
+       <div class="prompt-label">${vg.dir === 'es-en' ? 'Dilo en inglés' : 'Dilo en español'} · palabra ${vg.i+1} de ${vg.len}</div>
+       <div class="prompt-word">${answer[vg.q.ask]}</div>
+     </div>
+     <div class="opts">${opts.map((o,i)=>
+        `<button class="opt" data-i="${i}"><span class="num">${i+1}</span>${o[side]}</button>`).join('')}</div>
+     <div class="feedback" id="vFb"></div>
+     <div class="pool">${vg.cycled ? 'ya recorriste toda la categoría · empezamos otra vuelta' : left + ' palabras sin repetir en esta categoría'}</div>`;
+  document.getElementById('vBar').style.width = (vg.i/vg.len*100)+'%';
+  document.querySelectorAll('#vBody .opt').forEach(b =>
+    b.addEventListener('click', () => vAnswer(+b.dataset.i, b)));
+}
+function vAnswer(idx, btn){
+  if(vg.locked) return;
+  vg.locked = true;
+  const {answer, side, ask, opts} = vg.q;
+  const chosen = opts[idx];
+  const ok = chosen[side] === answer[side];
+  document.querySelectorAll('#vBody .opt').forEach((b,i) => {
+    b.disabled = true;
+    if(opts[i][side] === answer[side]) b.classList.add('ok');
+  });
+  if(ok){ vg.score++; vg.streak++; }
+  else { btn.classList.add('bad'); vg.streak = 0; vg.missed.push(answer); }
+  const tip = answer[2] ? ` <span style="color:var(--f-past)">${answer[2]}</span>` : '';
+  document.getElementById('vFb').innerHTML = (ok
+    ? `Correcto: <b>${answer[0]}</b> = ${answer[1]}.`
+    : `Era <b>${answer[0]}</b> = ${answer[1]}. Lo que elegiste, <b>${chosen[side]}</b>, significa ${chosen[ask]}.`) + tip;
+  document.getElementById('vScore').textContent = vg.score;
+  document.getElementById('vStreak').textContent = vg.streak;
+  vg.i++;
+  setTimeout(() => vg.i >= vg.len ? vEnd() : vNext(), ok ? (answer[2] ? 2400 : 900) : 3000);
+}
+function vEnd(){
+  document.getElementById('vBar').style.width = '100%';
+  const list = vg.missed.length
+    ? `<div class="missed"><div style="border:0;font-family:var(--body);color:var(--ink-soft);font-size:14px">Para repasar:</div>
+       ${vg.missed.map(m => `<div>${m[0]} <em>${m[1]}</em></div>`).join('')}</div>`
+    : `<p class="missed" style="text-align:center">Ronda limpia, sin fallos.</p>`;
+  document.getElementById('vBody').innerHTML =
+    `<div class="result">
+       <div class="big">${vg.score}<span style="color:var(--ink-soft)">/${vg.len}</span></div>
+       <div class="cap">${vg.cat} · ${vg.dir === 'es-en' ? 'español → inglés' : 'inglés → español'}</div>
+     </div>${list}
+     <div style="text-align:center"><button class="btn" id="vAgain">Otra ronda</button></div>`;
+  document.getElementById('vAgain').addEventListener('click', vStart);
+}
+function vStart(){
+  vg.i = 0; vg.score = 0; vg.streak = 0; vg.missed = [];
+  document.getElementById('vScore').textContent = '0';
+  document.getElementById('vStreak').textContent = '0';
+  vNext();
+}
+
+/* ================= JUEGO 2 · CONJUGACIÓN ================= */
+const FORM_ROLE = {
+  base:{n:'la forma base', why:'va justo después de will, de do / does / did y del infinitivo con to',
+        ex:v => 'she will ' + v.base + ' · did she ' + v.base + '?'},
+  third:{n:'la forma con -s', why:'solo se usa con he / she / it en presente simple y sin ningún auxiliar delante',
+        ex:v => 'she ' + v.third + ' ' + v.obj + ' every day'},
+  past:{n:'el past simple', why:'va sola, sin auxiliar, y con un momento cerrado del pasado',
+        ex:v => 'she ' + v.past + ' ' + v.obj + ' yesterday'},
+  pp:{n:'el past participle', why:'nunca va sola: necesita have / has / had delante, o una forma de be para la pasiva',
+        ex:v => 'she has ' + v.pp + ' ' + v.obj},
+  ing:{n:'la forma -ing', why:'nunca va sola: necesita una forma de be (am, is, are, was, were, be, been)',
+        ex:v => 'she is ' + v.ing + ' ' + v.obj}
+};
+const AUX_INFO = {
+  'do':  {d:'el auxiliar del presente simple con I / you / we / they', ex:'do you check the logs every day?'},
+  'does':{d:'el auxiliar del presente simple con he / she / it', ex:'does she check the logs every day?'},
+  'did': {d:'el auxiliar del pasado simple, igual para todos los sujetos', ex:'did she check the logs yesterday?'},
+  'am':  {d:'el presente de be con I', ex:'I am checking the logs right now'},
+  'is':  {d:'el presente de be con he / she / it', ex:'she is checking the logs right now'},
+  'are': {d:'el presente de be con you / we / they', ex:'they are checking the logs right now'},
+  'was': {d:'el pasado de be con I / he / she / it', ex:'she was checking the logs when you called'},
+  'were':{d:'el pasado de be con you / we / they', ex:'they were checking the logs when you called'},
+  'have':{d:'el auxiliar de los perfectos con I / you / we / they', ex:'they have checked the logs'},
+  'has': {d:'el auxiliar de los perfectos con he / she / it', ex:'she has checked the logs'},
+  'had': {d:'el auxiliar del pasado perfecto, igual para todos los sujetos', ex:'she had checked the logs before the meeting'},
+  'will':{d:'la marca del futuro, igual para todos los sujetos', ex:'she will check the logs tomorrow'},
+  'be':  {d:'la forma base de be, la que toca después de will', ex:'she will be checking the logs at nine'},
+  'been':{d:'el participio de be, el que toca después de have / has / had', ex:'she has been checking the logs for two hours'}
+};
+/* solo estos grupos comparten tiempo y se distinguen por el sujeto */
+const AUX_FAM = {do:'presente-do',does:'presente-do',am:'presente-be',is:'presente-be',are:'presente-be',
+                 was:'pasado-be',were:'pasado-be',have:'perfecto',has:'perfecto'};
+const keyOfForm = (v, w) => ['base','third','past','pp','ing'].find(k => v[k] === w);
+
+function pExplain(ok, chosen){
+  const q = pg.q, t = q.tense, v = q.verb;
+  let out = `<b>${t.time} · ${t.aspect}</b> — ${t.rule}`;
+  if(q.askAux){
+    out += ` Con el sujeto <b>${q.subj}</b> el auxiliar que toca es <b>${q.correct}</b>.`;
+    if(!ok && AUX_INFO[chosen]){
+      out += ` <b>${chosen}</b> es ${AUX_INFO[chosen].d} — <em>${AUX_INFO[chosen].ex}</em>.`;
+      if(AUX_FAM[chosen] && AUX_FAM[chosen] === AUX_FAM[q.correct])
+        out += ` Aquí el problema no es el tiempo verbal sino la concordancia con el sujeto.`;
+    }
+  } else {
+    out += ` Por eso en el hueco va ${FORM_ROLE[q.key].n}: <b>${q.correct}</b>.`;
+    const ck = !ok && keyOfForm(v, chosen);
+    if(ck) out += ` Elegiste <b>${chosen}</b>, que es ${FORM_ROLE[ck].n}: ${FORM_ROLE[ck].why} — <em>${FORM_ROLE[ck].ex(v)}</em>.`;
+  }
+  return out;
+}
+
+const pg = {time:'Todos', hint:true, len:10, i:0, score:0, streak:0, seen:new Set(), q:null, locked:false};
+
+function pNext(){
+  const tenses = pg.time === 'Todos' ? TENSES : TENSES.filter(t => t.time === pg.time);
+  let tense, verb, subj, mode, built, seq, target, correct, askAux, sig, tries = 0;
+  do {
+    tense = rnd(tenses);
+    const cont = tense.aspect.indexOf('ontinuous') > -1;
+    verb = rnd(cont ? VERBS.filter(v => !v.stative) : VERBS);   // los verbos de estado no van en continuo
+    subj = rnd(['I','you','she','we','they']);
+    const r = Math.random();
+    mode = r < 0.6 ? 'aff' : (r < 0.8 ? 'neg' : 'q');
+    built = build(tense, verb, subj, mode);
+    seq = built.seq;
+    const auxIdx = seq.map((tk,i) => tk.r === 'aux' ? i : -1).filter(i => i >= 0);
+    const mainIdx = seq.findIndex(tk => tk.r === 'main');
+    askAux = auxIdx.length && Math.random() < 0.35;
+    target = askAux ? rnd(auxIdx) : mainIdx;
+    correct = seq[target].t;
+    sig = [verb.base, tense.time, tense.aspect, subj, mode, target].join('|');
+  } while(pg.seen.has(sig) && ++tries < 80);          // no repetir un ejercicio ya visto
+  if(pg.seen.size > 4000) pg.seen.clear();
+  pg.seen.add(sig);
+
+  const opts = askAux
+    ? (() => { const o = [correct];
+        while(o.length < 4){ const c = rnd(Object.keys(AUX_INFO)); if(!o.includes(c)) o.push(c); }
+        return o; })()
+    : [...new Set([verb.base, verb.third, verb.past, verb.pp, verb.ing])];
+
+  pg.q = {tense, verb, subj, mode, seq, end:built.end, target, correct,
+          opts:shuffle(opts), askAux, key:built.key};
+  pg.locked = false;
+  pRender();
+}
+function pRender(){
+  const {tense, seq, end, target, opts, mode, askAux, verb} = pg.q;
+  const words = seq.map((tk,i) => i === target
+    ? `<span class="blank" id="pBlank">?</span>`
+    : `<span class="${tk.c}">${esc(i === 0 ? cap(tk.t) : tk.t)}</span>`).join(' ') + end;
+  const modeEs = mode === 'neg' ? 'negativa' : (mode === 'q' ? 'pregunta' : 'afirmativa');
+  const hint = pg.hint
+    ? `${tense.time} · ${tense.aspect} · ${modeEs}`
+    : `Oración ${modeEs} — deduce el tiempo por la pista temporal`;
+  document.getElementById('pBody').innerHTML =
+    `<div class="prompt">
+       <div class="prompt-label">${hint} · pregunta ${pg.i+1} de ${pg.len}</div>
+       <div class="q-sentence">${words}</div>
+       <div class="prompt-label" style="margin-top:14px">${askAux ? 'Falta el auxiliar' : 'Verbo: ' + verb.base + ' — ' + verb.es}</div>
+     </div>
+     <div class="opts">${opts.map((o,i)=>
+        `<button class="opt" data-i="${i}"><span class="num">${i+1}</span>${o}</button>`).join('')}</div>
+     <div class="feedback" id="pFb"></div>`;
+  document.getElementById('pBar').style.width = (pg.i/pg.len*100)+'%';
+  document.querySelectorAll('#pBody .opt').forEach(b =>
+    b.addEventListener('click', () => pAnswer(opts[+b.dataset.i], b)));
+}
+function pAnswer(chosen, btn){
+  if(pg.locked) return;
+  pg.locked = true;
+  const {correct, askAux, key, target} = pg.q;
+  const ok = chosen === correct;
+  document.querySelectorAll('#pBody .opt').forEach((b,i) => {
+    b.disabled = true;
+    if(pg.q.opts[i] === correct) b.classList.add('ok');
+  });
+  if(!ok) btn.classList.add('bad');
+  const blank = document.getElementById('pBlank');
+  blank.textContent = target === 0 ? cap(correct) : correct;
+  blank.className = 'blank ' + (askAux ? 'tk-aux' : 'f-' + key);
+  if(ok){ pg.score++; pg.streak++; } else { pg.streak = 0; }
+  document.getElementById('pFb').innerHTML =
+    (ok ? '<span style="color:var(--f-pp)">Correcto.</span> ' : '<span style="color:var(--f-past)">No es esa.</span> ') + pExplain(ok, chosen);
+  document.getElementById('pScore').textContent = pg.score;
+  document.getElementById('pStreak').textContent = pg.streak;
+  pg.i++;
+  setTimeout(() => pg.i >= pg.len ? pEnd() : pNext(), ok ? 2600 : 5200);
+}
+function pEnd(){
+  document.getElementById('pBar').style.width = '100%';
+  const pct = pg.score / pg.len;
+  const msg = pct === 1 ? 'Impecable.'
+    : pct >= 0.7 ? 'Buen control de las formas.'
+    : 'Vuelve a la matriz de los doce tiempos y repite la ronda.';
+  document.getElementById('pBody').innerHTML =
+    `<div class="result">
+       <div class="big">${pg.score}<span style="color:var(--ink-soft)">/${pg.len}</span></div>
+       <div class="cap">${pg.time === 'Todos' ? 'todos los tiempos' : pg.time} · ${pg.hint ? 'con pista' : 'sin pista'}</div>
+     </div>
+     <p class="missed" style="text-align:center">${msg}</p>
+     <div style="text-align:center"><button class="btn" id="pAgain">Otra ronda</button></div>`;
+  document.getElementById('pAgain').addEventListener('click', pStart);
+}
+function pStart(){
+  pg.i = 0; pg.score = 0; pg.streak = 0;
+  document.getElementById('pScore').textContent = '0';
+  document.getElementById('pStreak').textContent = '0';
+  pNext();
+}
+
+/* Teclas 1-5 para el juego que esté a la vista */
+document.addEventListener('keydown', e => {
+  const n = parseInt(e.key, 10);
+  if(!(n >= 1 && n <= 5)) return;
+  if(/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) return;
+  const vis = ['vBody','pBody'].map(id => document.getElementById(id)).filter(el => {
+    const r = el.getBoundingClientRect();
+    return r.top < innerHeight * 0.9 && r.bottom > innerHeight * 0.1;
+  });
+  if(vis.length !== 1) return;
+  const btns = vis[0].querySelectorAll('.opt:not(:disabled)');
+  if(btns[n-1]) btns[n-1].click();
+});
+
+/* ================= INIT ================= */
+function init(){
+  const sel = document.getElementById('verbSel');
+  const gIrr = el('optgroup'); gIrr.label = 'Irregulares';
+  const gReg = el('optgroup'); gReg.label = 'Regulares (-ed)';
+  VERBS.forEach((v,i) => {
+    const o = el('option'); o.value = i; o.textContent = `${v.base} — ${v.es}`;
+    (v.reg ? gReg : gIrr).appendChild(o);
+  });
+  sel.appendChild(gIrr); sel.appendChild(gReg);
+  sel.value = VERBS.indexOf(state.verb);
+
+  sel.addEventListener('change', e => {
+    state.verb = VERBS[+e.target.value];
+    renderVerbCard(); renderMatrix();
+  });
+  document.getElementById('subjSel').addEventListener('change', e => {
+    state.subj = e.target.value; renderMatrix();
+  });
+  document.getElementById('modeSeg').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    state.mode = b.dataset.mode;
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    renderMatrix();
+  });
+  document.getElementById('irrFilter').addEventListener('input', e => renderIrregulars(e.target.value));
+
+  // Juego de vocabulario
+  const cats = document.getElementById('vCats');
+  ['Todas', ...Object.keys(VOCAB)].forEach(c => {
+    const b = el('button','chip',c);
+    b.setAttribute('aria-pressed', String(c === vg.cat));
+    b.dataset.cat = c;
+    cats.appendChild(b);
+  });
+  cats.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if(!b) return;
+    vg.cat = b.dataset.cat;
+    vg.seen.clear();
+    [...cats.children].forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    vStart();
+  });
+  document.getElementById('vDir').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    vg.dir = b.dataset.dir;
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    vStart();
+  });
+  document.getElementById('vLen').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    vg.len = +b.dataset.len;
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    vStart();
+  });
+
+  // Juego de conjugación
+  const times = document.getElementById('pTimes');
+  ['Todos','Presente','Pasado','Futuro'].forEach(t => {
+    const b = el('button','chip',t);
+    b.setAttribute('aria-pressed', String(t === pg.time));
+    b.dataset.time = t;
+    times.appendChild(b);
+  });
+  times.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if(!b) return;
+    pg.time = b.dataset.time;
+    [...times.children].forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    pStart();
+  });
+  document.getElementById('pHint').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    pg.hint = b.dataset.hint === 'on';
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    pStart();
+  });
+  document.getElementById('pLen').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    pg.len = +b.dataset.len;
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    pStart();
+  });
+
+  renderHero(); renderVerbCard(); renderMatrix(); renderIrregulars('');
+  vStart(); pStart();
+}
+init();
+</script>
+</body>
+</html>
