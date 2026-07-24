@@ -209,6 +209,8 @@ section[id]{scroll-margin-top:96px}
   background:var(--ink);color:#fff;border:0;border-radius:3px;padding:13px 22px;cursor:pointer;
 }
 .btn:hover{background:#000}
+.continue{margin-top:16px;display:flex;align-items:center;gap:12px}
+.hintkey{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 .result{text-align:center;padding:14px 0 8px}
 .result .big{font-family:var(--display);font-weight:800;font-size:clamp(40px,9vw,72px);letter-spacing:-.03em;line-height:1}
 .result .cap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
@@ -436,7 +438,20 @@ section[id]{scroll-margin-top:96px}
   <p class="lede">Las preguntas se generan solas a partir de los verbos y los doce tiempos de esta página. A veces falta el verbo principal, a veces el auxiliar. Si fallas, te digo la regla.</p>
   <div class="game">
     <div class="game-top">
-      <div class="chips" id="pTimes"></div>
+      <div class="game-row" style="margin-top:0">
+        <div class="ctrl-inline">
+          <span class="seg-label">Practicar</span>
+          <select id="pScope" aria-label="Qué practicar"></select>
+        </div>
+        <div class="ctrl-inline">
+          <span class="seg-label">Ejercicio</span>
+          <div class="seg" id="pType">
+            <button data-type="mix" aria-pressed="true">Mezclado</button>
+            <button data-type="main" aria-pressed="false">Verbo</button>
+            <button data-type="aux" aria-pressed="false">Auxiliar</button>
+          </div>
+        </div>
+      </div>
       <div class="game-row">
         <div class="seg" id="pHint">
           <button data-hint="on" aria-pressed="true">Con pista</button>
@@ -1016,7 +1031,7 @@ function vAnswer(idx, btn){
   document.getElementById('vScore').textContent = vg.score;
   document.getElementById('vStreak').textContent = vg.streak;
   vg.i++;
-  setTimeout(() => vg.i >= vg.len ? vEnd() : vNext(), ok ? (answer[2] ? 2400 : 900) : 3000);
+  pContinue('vFb', vg.i >= vg.len, vEnd, vNext);
 }
 function vEnd(){
   document.getElementById('vBar').style.width = '100%';
@@ -1073,6 +1088,17 @@ const AUX_FAM = {do:'presente-do',does:'presente-do',am:'presente-be',is:'presen
                  was:'pasado-be',were:'pasado-be',have:'perfecto',has:'perfecto'};
 const keyOfForm = (v, w) => ['base','third','past','pp','ing'].find(k => v[k] === w);
 
+/* Nada avanza solo: el usuario decide cuándo pasar a la siguiente */
+function pContinue(fbId, last, onEnd, onNext){
+  const fb = document.getElementById(fbId);
+  fb.insertAdjacentHTML('beforeend',
+    `<div class="continue"><button class="btn">${last ? 'Ver resultado' : 'Continuar'}</button>
+     <span class="hintkey">o pulsa Enter</span></div>`);
+  const b = fb.querySelector('.continue .btn');
+  b.addEventListener('click', () => last ? onEnd() : onNext());
+  try { b.focus({preventScroll:true}); } catch(e) { b.focus(); }
+}
+
 function pExplain(ok, chosen){
   const q = pg.q, t = q.tense, v = q.verb;
   let out = `<b>${t.time} · ${t.aspect}</b> — ${t.rule}`;
@@ -1091,23 +1117,58 @@ function pExplain(ok, chosen){
   return out;
 }
 
-const pg = {time:'Todos', hint:true, len:10, i:0, score:0, streak:0, seen:new Set(), q:null, locked:false};
+const ASP_ES = {'Simple':'simple','Continuous':'continuo','Perfect':'perfecto','Perfect continuous':'perfecto continuo'};
+const tenseEs = t => t.time + ' ' + ASP_ES[t.aspect];
+const T = (time, aspect) => TENSES.find(t => t.time === time && t.aspect === aspect);
+const SCOPES = [
+  {g:'General', items:[['all','Todos los tiempos'],['time:Presente','Todos los del presente'],
+    ['time:Pasado','Todos los del pasado'],['time:Futuro','Todos los del futuro']]},
+  {g:'Un tiempo concreto', items:TENSES.map((t,i) => ['tense:'+i, tenseEs(t)])},
+  {g:'Una forma concreta', items:[
+    ['form:past','Past simple — verbo en pasado'],
+    ['form:pp','Past participle — los perfectos'],
+    ['form:ing','Forma -ing — los continuos'],
+    ['form:base','Forma base — will, do / does / did'],
+    ['form:third','Tercera persona — la -s del presente']]}
+];
 
+const pg = {scope:'all', scopeLabel:'todos los tiempos', type:'mix', hint:true, len:10,
+            i:0, score:0, streak:0, seen:new Set(), q:null, locked:false};
+
+function pScopePool(){
+  const sc = pg.scope;
+  if(sc === 'all') return {pool:TENSES, forceMain:false, subj:null, modes:null};
+  if(sc.indexOf('time:') === 0) return {pool:TENSES.filter(t => t.time === sc.slice(5)), forceMain:false, subj:null, modes:null};
+  if(sc.indexOf('tense:') === 0) return {pool:[TENSES[+sc.slice(6)]], forceMain:false, subj:null, modes:null};
+  const f = sc.slice(5);                       // filtros por forma del verbo principal
+  if(f === 'pp')    return {pool:TENSES.filter(t => t.main === 'pp'),  forceMain:true, subj:null, modes:null};
+  if(f === 'ing')   return {pool:TENSES.filter(t => t.main === 'ing'), forceMain:true, subj:null, modes:null};
+  if(f === 'past')  return {pool:[T('Pasado','Simple')],   forceMain:true, subj:null, modes:['aff']};
+  if(f === 'third') return {pool:[T('Presente','Simple')], forceMain:true, subj:'she', modes:['aff']};
+  return {pool:[T('Futuro','Simple'), T('Presente','Simple'), T('Pasado','Simple')], forceMain:true, subj:null, modes:null};
+}
 function pNext(){
-  const tenses = pg.time === 'Todos' ? TENSES : TENSES.filter(t => t.time === pg.time);
+  const sc = pScopePool();
+  const baseOnly = pg.scope === 'form:base';
   let tense, verb, subj, mode, built, seq, target, correct, askAux, sig, tries = 0;
   do {
-    tense = rnd(tenses);
+    tense = rnd(sc.pool);
     const cont = tense.aspect.indexOf('ontinuous') > -1;
     verb = rnd(cont ? VERBS.filter(v => !v.stative) : VERBS);   // los verbos de estado no van en continuo
-    subj = rnd(['I','you','she','we','they']);
+    subj = sc.subj || rnd(['I','you','she','we','they']);
     const r = Math.random();
-    mode = r < 0.6 ? 'aff' : (r < 0.8 ? 'neg' : 'q');
+    mode = sc.modes ? rnd(sc.modes) : (r < 0.6 ? 'aff' : (r < 0.8 ? 'neg' : 'q'));
+    // la forma base solo sale de un tiempo simple si la oración es negativa o pregunta (do / does / did)
+    if(baseOnly && tense.aspect === 'Simple' && tense.time !== 'Futuro') mode = rnd(['neg','q']);
+    askAux = pg.type === 'aux' ? true
+           : pg.type === 'main' ? false
+           : (!sc.forceMain && Math.random() < 0.35);
+    if(askAux && !tense.aux.length && mode === 'aff') mode = rnd(['neg','q']);  // sin auxiliar no hay ejercicio de auxiliar
     built = build(tense, verb, subj, mode);
     seq = built.seq;
     const auxIdx = seq.map((tk,i) => tk.r === 'aux' ? i : -1).filter(i => i >= 0);
     const mainIdx = seq.findIndex(tk => tk.r === 'main');
-    askAux = auxIdx.length && Math.random() < 0.35;
+    if(askAux && !auxIdx.length) askAux = false;
     target = askAux ? rnd(auxIdx) : mainIdx;
     correct = seq[target].t;
     sig = [verb.base, tense.time, tense.aspect, subj, mode, target].join('|');
@@ -1167,7 +1228,7 @@ function pAnswer(chosen, btn){
   document.getElementById('pScore').textContent = pg.score;
   document.getElementById('pStreak').textContent = pg.streak;
   pg.i++;
-  setTimeout(() => pg.i >= pg.len ? pEnd() : pNext(), ok ? 2600 : 5200);
+  pContinue('pFb', pg.i >= pg.len, pEnd, pNext);
 }
 function pEnd(){
   document.getElementById('pBar').style.width = '100%';
@@ -1178,7 +1239,7 @@ function pEnd(){
   document.getElementById('pBody').innerHTML =
     `<div class="result">
        <div class="big">${pg.score}<span style="color:var(--ink-soft)">/${pg.len}</span></div>
-       <div class="cap">${pg.time === 'Todos' ? 'todos los tiempos' : pg.time} · ${pg.hint ? 'con pista' : 'sin pista'}</div>
+       <div class="cap">${pg.scopeLabel} · ${pg.type === 'mix' ? 'mezclado' : (pg.type === 'aux' ? 'solo auxiliar' : 'solo verbo')} · ${pg.hint ? 'con pista' : 'sin pista'}</div>
      </div>
      <p class="missed" style="text-align:center">${msg}</p>
      <div style="text-align:center"><button class="btn" id="pAgain">Otra ronda</button></div>`;
@@ -1193,14 +1254,21 @@ function pStart(){
 
 /* Teclas 1-5 para el juego que esté a la vista */
 document.addEventListener('keydown', e => {
-  const n = parseInt(e.key, 10);
-  if(!(n >= 1 && n <= 5)) return;
-  if(/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) return;
+  const ae = document.activeElement;
+  if(/^(INPUT|SELECT|TEXTAREA)$/.test(ae.tagName)) return;
   const vis = ['vBody','pBody'].map(id => document.getElementById(id)).filter(el => {
     const r = el.getBoundingClientRect();
     return r.top < innerHeight * 0.9 && r.bottom > innerHeight * 0.1;
   });
   if(vis.length !== 1) return;
+  if(e.key === 'Enter' || e.key === ' '){
+    if(ae.tagName === 'BUTTON') return;            // el navegador ya lo activa
+    const go = vis[0].querySelector('.continue .btn');
+    if(go){ e.preventDefault(); go.click(); }
+    return;
+  }
+  const n = parseInt(e.key, 10);
+  if(!(n >= 1 && n <= 5)) return;
   const btns = vis[0].querySelectorAll('.opt:not(:disabled)');
   if(btns[n-1]) btns[n-1].click();
 });
@@ -1264,17 +1332,26 @@ function init(){
   });
 
   // Juego de conjugación
-  const times = document.getElementById('pTimes');
-  ['Todos','Presente','Pasado','Futuro'].forEach(t => {
-    const b = el('button','chip',t);
-    b.setAttribute('aria-pressed', String(t === pg.time));
-    b.dataset.time = t;
-    times.appendChild(b);
+  const scope = document.getElementById('pScope');
+  SCOPES.forEach(g => {
+    const og = el('optgroup'); og.label = g.g;
+    g.items.forEach(([v,t]) => {
+      const o = el('option'); o.value = v; o.textContent = t;
+      og.appendChild(o);
+    });
+    scope.appendChild(og);
   });
-  times.addEventListener('click', e => {
-    const b = e.target.closest('.chip'); if(!b) return;
-    pg.time = b.dataset.time;
-    [...times.children].forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  scope.value = pg.scope;
+  scope.addEventListener('change', e => {
+    pg.scope = e.target.value;
+    pg.scopeLabel = e.target.options[e.target.selectedIndex].textContent.toLowerCase();
+    pStart();
+  });
+  document.getElementById('pType').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    pg.type = b.dataset.type;
+    [...e.currentTarget.querySelectorAll('button')]
+      .forEach(x => x.setAttribute('aria-pressed', String(x === b)));
     pStart();
   });
   document.getElementById('pHint').addEventListener('click', e => {
